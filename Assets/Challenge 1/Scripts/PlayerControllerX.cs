@@ -1,0 +1,30 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerControllerX : MonoBehaviour
+{
+    [SerializeField] private float speed;
+    [SerializeField] private float rotationSpeed;
+    private float verticalInput;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        FlyControl();
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+
+    }
+    private void FlyControl()
+    {
+        verticalInput = Input.GetAxis("Vertical1");
+        transform.Rotate(Vector3.right, verticalInput * rotationSpeed * Time.deltaTime);
+
+    }
+}
